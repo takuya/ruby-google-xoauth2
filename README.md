@@ -11,7 +11,6 @@ bash by paste
 URL=https://github.com/takuya/ruby-google-xoauth2.git
 echo "gem 'takuya-xoauth2', git: '$URL'" >> Gemfile
 ```
-
 ## Usage Sample
 ```ruby
 ## require
@@ -44,6 +43,19 @@ uids = imap.uid_search(['SUBJECT','Test', 'FROM', user_id])
 pop3 = GMailXOAuth2.pop3(client_secret_path, token_path, user_id)
 pop3.mails.empty?
 
+```
+### For develop.   
+sample for developer.
+```sh
+## clon project
+URL=git@github.com:takuya/ruby-google-xoauth2.git
+git clone $URL
+cd ruby-google-xoauth2
+## in project
+bundle install
+bundle exec ruby bin/oauth-google-to-localhost.rb
+bundle exec rspec spec/
+gem build
 ```
 
 ## OAUTH2 トークンの発行
