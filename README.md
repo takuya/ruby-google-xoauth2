@@ -11,18 +11,19 @@ echo "gem 'takuya-xoauth2', git: '$URL'" >> Gemfile
 
 ## Usage Sample
 ```ruby
+## require
+require 'takuya/xoauth2'
+## alias
+GMailXOAuth2 = Takuya::XOAuth2::GMailXOAuth2
+
+## env sample 
 require 'dotenv/load'
 Dotenv.load('.env', '.env.sample')
-## env 
 client_secret_path = ENV['client_secret_path'] # must
 token_path         = ENV['token_path'] # must
 user_id            = ENV['user_id'] # option
 ## select first of token.
 user_id=YAML.load_file(ENV['token_path']).keys[0] if user_id.empty?
-## require
-require 'takuya/xoauth2'
-## alias
-GMailXOAuth2 = Takuya::XOAuth2::GMailXOAuth2
 
 ## SMTP
 smtp = GMailXOAuth2.smtp(client_secret_path, token_path, user_id)
