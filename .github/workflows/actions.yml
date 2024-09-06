@@ -14,9 +14,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run : |
+      - name : apt 
+        run : |
           sudo apt-get update && sudo apt-get -y install jq
-      - run : |
+      - name : 環境変数から認証情報・トークンを取り出し。
+        run : |
+          pwd
           echo 環境変数のメモ
           echo expected variables
           echo Google-GCP-OAUTH2-client
@@ -34,9 +37,14 @@ jobs:
         with:
           bundle-cache: false
           ruby-version: 3.1
-      - run: |
+      - name : bundle install 
+        run: |
           bundle install
+          working-directory: ./your-directory 
+      - name : bundle install 
+        run:
           bundle exec rspec spec/
+
           
       
 
