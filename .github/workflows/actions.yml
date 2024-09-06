@@ -40,8 +40,7 @@ jobs:
       - name : bundle install 
         run: |
           bundle install
-          working-directory: ./your-directory 
-      - name : bundle install 
+      - name : rspecテスト
         run:
           bundle exec rspec spec/
 
