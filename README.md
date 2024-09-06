@@ -1,10 +1,21 @@
 ## GMail にXOAUTH2で認証するサンプル
 
+## Installation
+Add Following line into Gemfile.
+
+```
+gem 'takuya-xoauth2', git: 'https://github.com/takuya/ruby-google-xoauth2.git'
+```
+
+
+## Usage Sample
 ```ruby
 ## env 
 client_secret_path = ENV['client_secret_path']
 token_path         = ENV['token_path']
 user_id            = ENV['user_id']
+## select first of token.
+user_id=YAML.load_file(ENV['token_path']).keys[0] if user_id.empty?
 ## 
 GMailXOAuth2 = Takuya::XOAuth2::GMailXOAuth2
 
