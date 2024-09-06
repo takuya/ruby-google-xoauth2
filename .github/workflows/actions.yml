@@ -2,8 +2,8 @@ name: "rspec spec/"
 
 on:
   push:
-    branch:
-      - master
+    # branch:
+    #   - master
     paths:
       - 'lib/**'
       - '*.gemspec'
