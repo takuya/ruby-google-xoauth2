@@ -18,9 +18,9 @@ jobs:
           bundler-cache: false
           ruby-version: 3.1
       - run: |
-          echo bundle init
           [ -e work ] && rm -rf work
-          mkdir work
+          mkdir work && cd work
+          bundle init
           URL=https://github.com/takuya/ruby-google-xoauth2.git
           echo "gem 'takuya-xoauth2', git: '$URL'" >> Gemfile
           bundle install
