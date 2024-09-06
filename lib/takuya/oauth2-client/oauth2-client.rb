@@ -13,14 +13,13 @@ module Takuya
     attr_reader :credentials
 
     def initialize(client_secret_path, token_path, scope = nil)
-      @client_secret_path    = client_secret_path
-      @token_path            = token_path
-      @scope                 = scope || %w[https://mail.google.com/ openid]
-      @user_id               = 'default'
-      @callback_host         = 'http://localhost:3304'
-      @google_auth_client_id = Google::Auth::ClientId.from_file(@client_secret_path)
-      @token_storage         = Google::Auth::Stores::FileTokenStore.new(file: @token_path)
-      @authorizer            = Google::Auth::UserAuthorizer.new(@google_auth_client_id, @scope, @token_storage)
+      @client_secret_path = client_secret_path
+      @token_path         = token_path
+      @scope              = scope || %w[https://mail.google.com/ openid]
+      @callback_host      = 'http://localhost:3304'
+      @auth_client_id     = Google::Auth::ClientId.from_file(@client_secret_path)
+      @token_storage      = Google::Auth::Stores::FileTokenStore.new(file: @token_path)
+      @authorizer         = Google::Auth::UserAuthorizer.new(@auth_client_id, @scope, @token_storage)
     end
 
     # @return [String] A non-nil string.

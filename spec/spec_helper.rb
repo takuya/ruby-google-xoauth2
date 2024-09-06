@@ -21,6 +21,8 @@ RSpec.configure do |config|
   ENV['client_secret_path'] = File.realpath ENV['client_secret_path']
   ENV['token_path'] = File.realpath ENV['token_path']
   ENV['user_id'] = ENV['user_id'].strip
+  ## 
+  raise "Empty file (#{ENV['token_path']})." unless YAML.load_file(ENV['token_path'])
   ENV['user_id'] = YAML.load_file(ENV['token_path']).keys[0] if ENV['user_id'].empty?
 
 
