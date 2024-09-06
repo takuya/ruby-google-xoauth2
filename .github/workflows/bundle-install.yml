@@ -7,7 +7,7 @@ on:
     paths:
       - 'lib/**'
       - '*.gemspec'
-      - '.github/workflows/actions.yml'
+      - '.github/workflows/bundle-install.yml'
 
 jobs:
   run-bundle-install:
