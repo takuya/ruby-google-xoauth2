@@ -53,7 +53,7 @@ ENV設定してれば、Enter 連打。ブラウザは自分で開いて。
 1. [GCP](https://console.cloud.google.com/) にアクセス、プロジェクトを作成
 1. プロジェクトの設定をする
     - [Gmail API](https://console.cloud.google.com/apis/library/gmail.googleapis.com) をプロジェクトで有効に. 
-    - [People API](https://console.cloud.google.com/apis/library/people.googleapis.com) をプロジェクトで有効に. 
+      - その他、アプリに必要なAPIを有効にする。[People API](https://console.cloud.google.com/apis/library/people.googleapis.com), 
 1. [認証情報一覧](https://console.cloud.google.com/apis/credentials)に移動
 1. [認証情報（Credentials）を作成](https://console.cloud.google.com/apis/credentials/oauthclient) .
 1. 認証情報の詳細設定をする
@@ -64,7 +64,7 @@ ENV設定してれば、Enter 連打。ブラウザは自分で開いて。
     - secretが含まれてることを確認。
 
 
-メモ: People APIではメアドやユーザ名が取得可能で動作チェックにも使えるので有効にしている。
+メモ: APIではメアドやユーザ名が取得可能で動作チェックにも使えるので有効にしている。
 xoauth2単体ではPeopleは不要。GMail-APIにてメアドを取得可能なため、Peopleがなくてもメアドが取れる。
 
 
@@ -133,7 +133,7 @@ GsuiteプロジェクトがExternal（外部）なら、一般Googleアカウン
 
 Gmailのtesting の場合、**7days** でトークンが無効化される。と一般的に言われている。
 
-ログイン機能だけ（userinfo.email、userinfo.profile、openid）なら無制限、Gmailが含まれると７日である。
+スコープ指定で[OAuth2 Auth](https://developers.google.com/identity/protocols/oauth2/scopes#oauth2)でログイン機能だけ（userinfo.email、userinfo.profile、openid）なら無制限、[Gmail-API](https://developers.google.com/gmail/api/auth/scopes#scopes)が含まれると７日である。
 
 #### SMTP認証方式とアカウント
 

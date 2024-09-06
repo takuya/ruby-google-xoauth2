@@ -1,11 +1,13 @@
 require "google/apis/gmail_v1"
+require "google/apis/gmail_v1"
 require "googleauth"
 require "googleauth/stores/file_token_store"
 require "fileutils"
 require 'webrick'
 require "pry"
 require 'google-apis-oauth2_v2'
-require 'dotenv/load'
+
+require_relative '../lib/takuya/oauth2-client/oauth2-client'
 
 def load_env
   default_client_secret_path = File.expand_path(File.dirname(__FILE__) + "/../credentials/client_secret.json")
@@ -18,15 +20,9 @@ def load_env
   [client_secret_path, token_path]
 end
 
-def renew_access_token(client_secret_path, token_path, user_id)
-  ####
-  scope       = ['https://mail.google.com/']
-  authorizer  = Google::Auth::UserAuthorizer.new(
-    gcp_client=Google::Auth::ClientId.from_file(client_secret_path),
-    scope,
-    token_store = Google::Auth::Stores::FileTokenStore.new(file: token_path),
-  )
-  credentials = authorizer.get_credentials(user_id)
+# @param client[Takuya::OAuth2Client]
+def renew_access_token(client, user_id)
+  credentials = client.authorizer.get_credentials(user_id)
   raise "#{user_id}'s token does not found. " if credentials.nil?
   puts "Token is found. refresh access token."
   credentials.refresh!
@@ -34,31 +30,25 @@ def renew_access_token(client_secret_path, token_path, user_id)
   credentials
 end
 
-def list_address(token_path)
-  yaml = YAML.load_file(token_path)
-  yaml.keys
-end
-
-def start_dialog(token_path)
+def start_dialog(user_address_list)
   puts "Staring renew access token."
-  users   = list_address(token_path)
   address = nil
   until address
-    users.each.with_index do |user, idx|
+    user_address_list.each.with_index do |user, idx|
       puts "#{idx + 1}: #{user} "
     end
     puts ""
     $stdout.print("Enter : >  ")
     input = $stdin.gets.strip
     selected = Integer(input)-1 rescue users.size
-    address = users[selected]
+    address = user_address_list[selected]
   end
   address
 end
 
 def main()
-  client_secret_path, token_path = load_env
-  renew_access_token(client_secret_path, token_path, start_dialog(token_path))
+  client = Takuya::OAuth2Client.new(*load_env)
+  renew_access_token(client, start_dialog(client.list_stored_address))
 end
 
 if $0 == __FILE__
