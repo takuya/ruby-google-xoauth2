@@ -19,6 +19,8 @@ token_path         = ENV['token_path'] # must
 user_id            = ENV['user_id'] # option
 ## select first of token.
 user_id=YAML.load_file(ENV['token_path']).keys[0] if user_id.empty?
+## require
+require 'takuya/xoauth2'
 ## alias
 GMailXOAuth2 = Takuya::XOAuth2::GMailXOAuth2
 
