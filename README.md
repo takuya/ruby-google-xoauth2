@@ -1,4 +1,4 @@
-## GMail にXOAUTH2で認証するサンプル
+## GMail にXOAUTH2でSMTP認証するサンプル
 
 ## Installation
 Add Following line into Gemfile.
