@@ -1,4 +1,4 @@
-name: "takuya-xoauth2"
+name: "rspec spec/"
 
 on:
   push:
@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run : |
-          apt-get update && apt-get -y install jq
+          sudo apt-get update && sudo apt-get -y install jq
       - run : |
           echo 環境変数のメモ
           echo expected variables
