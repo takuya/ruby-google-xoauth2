@@ -20,3 +20,9 @@ end
 gem "dotenv", "~> 3.1"
 
 gem "mail", "~> 2.8"
+
+gem "webrick", "~> 1.8"
+
+gem "googleauth", "~> 1.11"
+
+gem "google-apis-oauth2_v2", "~> 0.18.0"
