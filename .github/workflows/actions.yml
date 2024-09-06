@@ -19,3 +19,7 @@ jobs:
           ruby-version: 3.1
       - run: |
           echo bundle init
+          URL=https://github.com/takuya/ruby-google-xoauth2.git
+          echo "gem 'takuya-xoauth2', git: '$URL'" >> Gemfile
+          bundle install
+
