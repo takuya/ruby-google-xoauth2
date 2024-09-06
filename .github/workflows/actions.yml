@@ -20,23 +20,3 @@ jobs:
         with:
           ruby-version: '3.3' 
           bundler-cache: true 
-        - run: |
-            bundle exec init
-# jobs:
-#   test-gem-install:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: start
-#           uses: ruby/setup-ruby@v1
-#           with:
-#             ruby-version: '3.1'
-#             bundler-cache: false
-#       # - name: installtion
-#       #     run:
-#       #       echo "# Installation Test"
-#       #       [ -e work ] && rm -rf work
-#       #       mkdir work && cd work
-#       #       URL='https://github.com/takuya/ruby-google-xoauth2.git'
-#       #       echo "gem 'takuya-xoauth2', git: '$URL'" >> Gemfile
-#       #       bundle install 
-
