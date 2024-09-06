@@ -53,7 +53,7 @@ ENV設定してれば、Enter 連打。ブラウザは自分で開いて。
 1. [GCP](https://console.cloud.google.com/) にアクセス、プロジェクトを作成
 1. プロジェクトの設定をする
     - [Gmail API](https://console.cloud.google.com/apis/library/gmail.googleapis.com) をプロジェクトで有効に. 
-      - その他、アプリに必要なAPIを有効にする。[People API](https://console.cloud.google.com/apis/library/people.googleapis.com), 
+    - その他、アプリに必要なAPIを有効にする。[People API](https://console.cloud.google.com/apis/library/people.googleapis.com),[Google Drive API](https://console.cloud.google.com/apis/library/drive.googleapis.com)など, 
 1. [認証情報一覧](https://console.cloud.google.com/apis/credentials)に移動
 1. [認証情報（Credentials）を作成](https://console.cloud.google.com/apis/credentials/oauthclient) .
 1. 認証情報の詳細設定をする
