@@ -20,8 +20,8 @@ jobs:
           echo 環境変数のメモ
           echo expected variables
           echo Google-GCP-OAUTH2-client
-          echo "${{ secrets.CLIENT_SECRET_JSON }}" >>  credentials/client_secret.json
-          echo "${{ secrets.TOKENS_YAML }}" >>  credentials/client_secret.json
+          echo "${{ secrets.CLIENT_SECRET_JSON_BASE64 }}"| base64 -d  >>  credentials/client_secret.json
+          echo "${{ secrets.TOKENS_YAML_BASE64 }}" |base64 -d  >>  credentials/client_secret.json
           cat credentials/client_secret.json | jq '.web | {"project":.project_id,"client": .client_id}'
           ruby -r yaml -e 'puts YAML.load_file("credentials/tokens.yaml").to_a[0][1]' | jq .
       - uses: ruby/setup-ruby@v1
