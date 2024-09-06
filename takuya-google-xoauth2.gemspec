@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
-require_relative "lib/takuya/xoauth2"
 
 Gem::Specification.new do |spec|
+  ## 
+  require_relative 'lib/takuya/xoauth2/versions'
+
   spec.name          = "takuya-xoauth2"
   spec.version       = Takuya::XOAuth2::VERSION
   spec.authors       = ["takuya"]
   spec.email         = ["55338+takuya@users.noreply.github.com"]
-
+  spec.licenses      = ['GPL-3.0-or-later']
   spec.summary       = "xoauth2 wrapper of net-smtp, net-imap "
   spec.description   = "This package make use of xoauth2 "
   spec.homepage      = "https://github.com/takuya/ruby-xoauth2/"

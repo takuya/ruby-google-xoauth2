@@ -1,5 +1,5 @@
-unless defined?(Takuya::XOAuth2)
-  raise LoadError, "Please require 'takuya/xoauth2' instead of 'takuya/xoauth2/gmail-xoauth2'"
+module Takuya
+  module XOAuth2
+    VERSION = "0.1.0"
+  end
 end
-
-Takuya::XOAuth2::VERSION = "0.1.0"
