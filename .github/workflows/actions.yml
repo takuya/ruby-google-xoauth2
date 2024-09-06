@@ -20,7 +20,8 @@ jobs:
       with:
         ruby-version: '3.3' 
         bundler-cache: true 
-    - run: bundle exec init
+    - run: |
+        bundle exec init
 # jobs:
 #   test-gem-install:
 #     runs-on: ubuntu-latest
