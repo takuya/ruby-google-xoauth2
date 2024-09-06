@@ -26,6 +26,28 @@ pop3.mails.empty?
 
 ```
 
+## OAUTH2 トークンの発行
+
+```ruby
+bundle exec ruby bin/oauth-google-to-localhost.rb
+```
+
+## OAUTH2 クライアントの準備
+
+1. GCP(https://console.cloud.google.com/) にアクセス、プロジェクトを作成
+    1. プロジェクト作成(https://console.cloud.google.com/cloud-resource-manage).
+    1. Gmail API をプロジェクトで有効に. (https://console.cloud.google.com/apis/library/gmail.googleapis.com)
+2. 認証情報を作成 Credentials(https://console.cloud.google.com/apis/credentials/oauthclient).
+3. OAuth Client をWEBアプリで作成。
+4. JSON(client_secret.json)をダウンロード。secretが含まれてることを確認。
+5. コールバックアドレス`"http://localhost:8080/oauth2callback"`を入力して保存。
+
+
+メモ: People APIでメアドが取得可能であるが、今回は使わない。GMailだけメアドが取得可能なため
+
+People API(https://console.cloud.google.com/apis/library/people.googleapis.com)を有効にしておくと、ログイン機能をの代わりになり
+OAUTH後にユーザーのメールアドレスや名前などが取得できる、メアドの変更にも追従できるんだけど。今回はGMailだけを使う。
+
 
 ## 注意事項
 

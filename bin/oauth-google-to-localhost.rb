@@ -80,9 +80,9 @@ def start_dialog(client_secret_path, token_path)
       0.  GCP(https://console.cloud.google.com/) にアクセス、プロジェクトを作成
           0.1 プロジェクト作成(https://console.cloud.google.com/cloud-resource-manage).
           0.2 Gmail API をプロジェクトで有効に. (https://console.cloud.google.com/apis/library/gmail.googleapis.com)
-          0.3 People API をプロジェクトで有効に. (https://console.cloud.google.com/apis/library/people.googleapis.com)
+              メモ: People APIでメアドが取得可能であるが、今回は使わない。GMailだけメアドが取得可能なため
       1. 認証情報を作成 Credentials(https://console.cloud.google.com/apis/credentials/oauthclient).
-      2. OAuth Client をデスクトップアプリで作成。
+      2. OAuth Client をWEBアプリで作成。
       3. JSON(client_secret.json)をダウンロード。secretが含まれてることを確認。
     
       準備ができたら、Clientを作成し、secret.json をダウンロードして保存する。
@@ -99,7 +99,7 @@ end
 
 def make_authorizer(client_secret_path, token_path)
   ####
-  scope      = ['https://mail.google.com/', 'https://www.googleapis.com/auth/userinfo.email']
+  scope      = ['https://mail.google.com/']
   authorizer = Google::Auth::UserAuthorizer.new(
     Google::Auth::ClientId.from_file(client_secret_path),
     scope,
