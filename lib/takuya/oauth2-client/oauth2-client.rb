@@ -17,9 +17,9 @@ module Takuya
       @token_path         = token_path
       @scope              = scope || %w[https://mail.google.com/ openid]
       @callback_host      = 'http://localhost:3304'
-      @auth_client_id     = Google::Auth::ClientId.from_file(@client_secret_path)
-      @token_storage      = Google::Auth::Stores::FileTokenStore.new(file: @token_path)
-      @authorizer         = Google::Auth::UserAuthorizer.new(@auth_client_id, @scope, @token_storage)
+      auth_client_id     = Google::Auth::ClientId.from_file(@client_secret_path)
+      token_storage      = Google::Auth::Stores::FileTokenStore.new(file: @token_path)
+      @authorizer         = Google::Auth::UserAuthorizer.new(auth_client_id, @scope, token_storage)
     end
 
     # @return [String] A non-nil string.
@@ -30,10 +30,10 @@ module Takuya
       elsif @scope.find { |e| e.match? Regexp.union([/openid$/, /email$/, /profile$/]) }
         email_address = get_oauth2_profile
       else
-        raise 'scope is invalid'
+        raise 'OAUTH2 Scope is invalid.'
       end
       #
-      raise "using token failed." if email_address.nil?
+      raise "Trial run to use token failed." if email_address.nil?
       email_address
     end
 
