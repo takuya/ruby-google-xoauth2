@@ -6,7 +6,7 @@ RSpec.describe "xoauth2認証テスト" do
   token_path         = ENV['token_path']
   user_id            = ENV['user_id']
 
-  it "[Net::IMAP]を作成（ショートカット）" do
+  it "[Net::IMAP]を作成（shortcut function）" do
     imap = Takuya::XOAuth2::GMailXOAuth2.imap(client_secret_path, token_path, user_id)
     imap.select('INBOX')
     search_criteria = ['SUBJECT', SecureRandom.uuid, 'FROM', user_id]
