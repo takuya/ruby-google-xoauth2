@@ -1,0 +1,32 @@
+name: "takuya-xoauth2"
+
+on:
+  push:
+    branch:
+      - master
+    paths:
+      - 'lib/**'
+      - '*.gemspec'
+      - '.github/workflows/actions.yml'
+  schedule:
+    - cron: '0 11 */2 * *
+
+
+jobs:
+  test-gem-install:
+    runs-on: ubuntu-latest
+    steps:
+      - name: start
+          uses: ruby/setup-ruby@v1
+          with:
+            ruby-version: '3.1'
+            bundler-cache: false
+      - name installtion
+        run:
+          echo "# Installation Test"
+          [ -e work ] && rm -rf work
+          mkdir work && cd work
+          URL='https://github.com/takuya/ruby-google-xoauth2.git'
+          echo "gem 'takuya-xoauth2', git: '$URL'" >> Gemfile
+          bundle install 
+
