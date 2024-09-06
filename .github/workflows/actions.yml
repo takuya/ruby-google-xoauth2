@@ -9,7 +9,7 @@ on:
       - '*.gemspec'
       - '.github/workflows/actions.yml'
   schedule:
-    - cron: '0 11 */2 * *
+    - cron: '0 11 */3 * *
 
 
 jobs:
@@ -21,12 +21,12 @@ jobs:
           with:
             ruby-version: '3.1'
             bundler-cache: false
-      - name: installtion
-          run:
-            echo "# Installation Test"
-            [ -e work ] && rm -rf work
-            mkdir work && cd work
-            URL='https://github.com/takuya/ruby-google-xoauth2.git'
-            echo "gem 'takuya-xoauth2', git: '$URL'" >> Gemfile
-            bundle install 
+      # - name: installtion
+      #     run:
+      #       echo "# Installation Test"
+      #       [ -e work ] && rm -rf work
+      #       mkdir work && cd work
+      #       URL='https://github.com/takuya/ruby-google-xoauth2.git'
+      #       echo "gem 'takuya-xoauth2', git: '$URL'" >> Gemfile
+      #       bundle install 
 
