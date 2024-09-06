@@ -133,7 +133,7 @@ GsuiteプロジェクトがExternal（外部）なら、一般Googleアカウン
 
 Gmailのtesting の場合、**7days** でトークンが無効化される。と一般的に言われている。
 
-スコープ指定で[OAuth2 Auth](https://developers.google.com/identity/protocols/oauth2/scopes#oauth2)でログイン機能だけ（userinfo.email、userinfo.profile、openid）なら無制限、[Gmail-API](https://developers.google.com/gmail/api/auth/scopes#scopes)が含まれると７日である。
+[OAuth2 Auth](https://developers.google.com/identity/protocols/oauth2/scopes#oauth2)でログイン機能だけのスコープ指定（userinfo.email、userinfo.profile、openid）なら無制限、[Gmail-API](https://developers.google.com/gmail/api/auth/scopes#scopes)が含まれると７日である。
 
 #### SMTP認証方式とアカウント
 
