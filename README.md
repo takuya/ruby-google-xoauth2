@@ -4,9 +4,10 @@
 Add Following line into Gemfile.
 
 ```
-gem 'takuya-xoauth2', git: 'https://github.com/takuya/ruby-google-xoauth2.git'
+## Gemfile
+URL=https://github.com/takuya/ruby-google-xoauth2.git
+echo "gem 'takuya-xoauth2', git: '$URL'" >> Gemfile
 ```
-
 
 ## Usage Sample
 ```ruby
