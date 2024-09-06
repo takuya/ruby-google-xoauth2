@@ -2,7 +2,10 @@
 
 ## Installation
 Add Following line into Gemfile.
-
+```ruby
+gem 'takuya-xoauth2', git: 'https://github.com/takuya/ruby-google-xoauth2.git'
+```
+bash by paste 
 ```sh
 ## Gemfile
 URL=https://github.com/takuya/ruby-google-xoauth2.git
