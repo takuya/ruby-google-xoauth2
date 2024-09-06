@@ -59,7 +59,7 @@ ENV設定してれば、Enter 連打。ブラウザは自分で開いて。
 1. 認証情報の詳細設定をする
     - OAuth2 Client をWEBアプリで作成。
     - 名前を決める
-    - コールバックアドレス`"http://localhost:8080/oauth2callback"`を入力して保存。
+    - コールバックアドレス`"http://localhost:3304/oauth2callback"`を入力して保存。
     - JSON(client_secret.json)をダウンロード。
     - secretが含まれてることを確認。
 
@@ -67,6 +67,7 @@ ENV設定してれば、Enter 連打。ブラウザは自分で開いて。
 メモ: APIではメアドやユーザ名が取得可能で動作チェックにも使えるので有効にしている。
 xoauth2単体ではPeopleは不要。GMail-APIにてメアドを取得可能なため、Peopleがなくてもメアドが取れる。
 
+メモ：コールバックのアドレスは自由に変えられる。状況に応じた変更後は、[詳細画面](https://console.cloud.google.com/apis/credentials/oauthclient)で変更後のコールバック・アドレスを追加する。
 
 
 ## 注意事項
