@@ -31,7 +31,7 @@ jobs:
           echo "---------------------------"
           echo "--- token"
           echo "---------------------------"
-          echo "${{ secrets.TOKENS_YAML_BASE64 }}" |base64 -d  >>  credentials/token.yaml
+          echo "${{ secrets.TOKENS_YAML_BASE64 }}" |base64 -d  >>  credentials/tokens.yaml
           ruby -r yaml -e 'puts YAML.load_file("credentials/tokens.yaml").to_a[0][1]' | jq .
       - uses: ruby/setup-ruby@v1
         with:
