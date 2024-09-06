@@ -7,17 +7,15 @@ on:
     paths:
       - 'lib/**'
       - '*.gemspec'
-      - '.github/workflows/bundle-insall.yml'
+      - '.github/workflows/actions.yml'
 
 jobs:
   test-GMail-API-xoauth2:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name : apt
       - run : |
           apt-get update && apt-get -y install jq
-      - name : env_vars
       - run : |
           echo 環境変数のメモ
           echo expected variables
