@@ -2,8 +2,8 @@ name: "bundle install"
 
 on:
   push:
-    # branch:
-    #   - master
+    branch:
+      - master
     paths:
       - 'lib/**'
       - '*.gemspec'

@@ -2,12 +2,14 @@ name: "rspec spec/"
 
 on:
   push:
-    # branch:
-    #   - master
+    branch:
+      - master
     paths:
       - 'lib/**'
       - '*.gemspec'
       - '.github/workflows/actions.yml'
+    schedule:
+    - cron:  '0 11 */4 * *'
 
 jobs:
   test-GMail-API-xoauth2:
