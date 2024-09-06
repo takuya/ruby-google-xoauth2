@@ -8,8 +8,8 @@ on:
       - 'lib/**'
       - '*.gemspec'
       - '.github/workflows/actions.yml'
-    schedule:
-    - cron:  '0 11 */4 * *'
+  schedule:
+  - cron:  '0 11 */4 * *'
 
 jobs:
   test-GMail-API-xoauth2:
