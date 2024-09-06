@@ -3,7 +3,7 @@
 ## Installation
 Add Following line into Gemfile.
 
-```
+```sh
 ## Gemfile
 URL=https://github.com/takuya/ruby-google-xoauth2.git
 echo "gem 'takuya-xoauth2', git: '$URL'" >> Gemfile
@@ -11,13 +11,15 @@ echo "gem 'takuya-xoauth2', git: '$URL'" >> Gemfile
 
 ## Usage Sample
 ```ruby
+require 'dotenv/load'
+Dotenv.load('.env', '.env.sample')
 ## env 
-client_secret_path = ENV['client_secret_path']
-token_path         = ENV['token_path']
-user_id            = ENV['user_id']
+client_secret_path = ENV['client_secret_path'] # must
+token_path         = ENV['token_path'] # must
+user_id            = ENV['user_id'] # option
 ## select first of token.
 user_id=YAML.load_file(ENV['token_path']).keys[0] if user_id.empty?
-## 
+## alias
 GMailXOAuth2 = Takuya::XOAuth2::GMailXOAuth2
 
 ## SMTP
@@ -44,21 +46,27 @@ pop3.mails.empty?
 bundle exec ruby bin/oauth-google-to-localhost.rb
 ```
 
+ENV設定してれば、Enter 連打。ブラウザは自分で開いて。
+
 ## OAUTH2 クライアントの準備
 
-1. GCP(https://console.cloud.google.com/) にアクセス、プロジェクトを作成
-    1. プロジェクト作成(https://console.cloud.google.com/cloud-resource-manage).
-    1. Gmail API をプロジェクトで有効に. (https://console.cloud.google.com/apis/library/gmail.googleapis.com)
-2. 認証情報を作成 Credentials(https://console.cloud.google.com/apis/credentials/oauthclient).
-3. OAuth Client をWEBアプリで作成。
-4. JSON(client_secret.json)をダウンロード。secretが含まれてることを確認。
-5. コールバックアドレス`"http://localhost:8080/oauth2callback"`を入力して保存。
+1. [GCP](https://console.cloud.google.com/) にアクセス、プロジェクトを作成
+1. プロジェクトの設定をする
+    - [Gmail API](https://console.cloud.google.com/apis/library/gmail.googleapis.com) をプロジェクトで有効に. 
+    - [People API](https://console.cloud.google.com/apis/library/people.googleapis.com) をプロジェクトで有効に. 
+1. [認証情報一覧](https://console.cloud.google.com/apis/credentials)に移動
+1. [認証情報（Credentials）を作成](https://console.cloud.google.com/apis/credentials/oauthclient) .
+1. 認証情報の詳細設定をする
+    - OAuth2 Client をWEBアプリで作成。
+    - 名前を決める
+    - コールバックアドレス`"http://localhost:8080/oauth2callback"`を入力して保存。
+    - JSON(client_secret.json)をダウンロード。
+    - secretが含まれてることを確認。
 
 
-メモ: People APIでメアドが取得可能であるが、今回は使わない。GMailだけメアドが取得可能なため
+メモ: People APIではメアドやユーザ名が取得可能で動作チェックにも使えるので有効にしている。
+xoauth2単体ではPeopleは不要。GMail-APIにてメアドを取得可能なため、Peopleがなくてもメアドが取れる。
 
-People API(https://console.cloud.google.com/apis/library/people.googleapis.com)を有効にしておくと、ログイン機能をの代わりになり
-OAUTH後にユーザーのメールアドレスや名前などが取得できる、メアドの変更にも追従できるんだけど。今回はGMailだけを使う。
 
 
 ## 注意事項
@@ -69,7 +77,7 @@ OAUTH後にユーザーのメールアドレスや名前などが取得できる
 
 
 
-### GMailとOAuthの認証とGoogle Workspaceについて
+## GMailとOAuthの認証とGoogle Workspaceについて
 
 Google Workspaceだと長過ぎるので以下では、GSuite（旧名）で呼称する。
 
