@@ -2,7 +2,7 @@
 
 
 Gem::Specification.new do |spec|
-  ## 
+  ##
   require_relative 'lib/takuya/xoauth2/versions'
 
   spec.name          = "takuya-xoauth2"
