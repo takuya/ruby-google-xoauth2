@@ -13,8 +13,7 @@ Gem::Specification.new do |spec|
   spec.summary       = "xoauth2 wrapper of net-smtp, net-imap "
   spec.description   = "This package make use of xoauth2 "
   spec.homepage      = "https://github.com/takuya/ruby-xoauth2/"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.4.0")
-
+  ## metadata
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/takuya/ruby-xoauth2/"
   spec.metadata["changelog_uri"] = "https://github.com/takuya/ruby-xoauth2/README.md"
@@ -28,8 +27,17 @@ Gem::Specification.new do |spec|
   #spec.executables   = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  # Uncomment to register a new dependency of your gem
-  # spec.add_dependency "example-gem", "~> 1.0"
+  # Dependencies
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.4.0")
+  spec.add_dependency "google-apis-gmail_v1"
+  spec.add_dependency "gmail_xoauth"
+  spec.add_dependency "net-smtp"
+  spec.add_dependency "net-imap"
+  spec.add_dependency "dotenv", "~> 3.1"
+  spec.add_dependency "mail", "~> 2.8"
+  spec.add_dependency "webrick", "~> 1.8"
+  spec.add_dependency "googleauth", "~> 1.11"
+  spec.add_dependency "google-apis-oauth2_v2", "~> 0.18.0"
 
   # For more information and examples about making a new gem, checkout our
   # guide at: https://bundler.io/guides/creating_gem.html
