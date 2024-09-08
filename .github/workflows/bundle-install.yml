@@ -27,4 +27,5 @@ jobs:
           URL=https://github.com/takuya/ruby-google-xoauth2.git
           echo "gem 'takuya-xoauth2', git: '$URL'" >> Gemfile
           bundle install
+          bundle exec ruby -e 'p require "takuya/xoauth2"'
 
