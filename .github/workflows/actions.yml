@@ -44,6 +44,16 @@ jobs:
       - name : rspecテスト
         run:
           bundle exec rspec spec/
+      - name: Write a log.
+        run:
+          date -I > last-tested.txt
+      - name: push updated lists
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: update tested date.
+          file_pattern: last-tested.txt
+          create_branch: false
+
 
           
       
